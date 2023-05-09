@@ -1,0 +1,51 @@
+﻿<div id="@ViewBag.ModalId" class="modal fade show" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@ViewBag.ModalTitle (<span id="@(ViewBag.ModalId)_ruc"></span>)</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <tr>
+                        <td class="font-weight-bold">Nombre o Raz&oacute;n Social</td>
+                        <td id="@(ViewBag.ModalId)_name"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold">Estado</td>
+                        <td id="@(ViewBag.ModalId)_status"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold">Condici&oacute;n</td>
+                        <td id="@(ViewBag.ModalId)_condition"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold">Ubigeo</td>
+                        <td id="@(ViewBag.ModalId)_ubigeo"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold">Departamento</td>
+                        <td id="@(ViewBag.ModalId)_department"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold">Provincia</td>
+                        <td id="@(ViewBag.ModalId)_province"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold">Distrito</td>
+                        <td id="@(ViewBag.ModalId)_district"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold">Domicilio Fiscal</td>
+                        <td id="@(ViewBag.ModalId)_address"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

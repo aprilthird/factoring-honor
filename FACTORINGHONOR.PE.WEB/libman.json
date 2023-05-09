@@ -1,0 +1,207 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "jsdelivr",
+      "library": "bootstrap@4.3.1",
+      "destination": "wwwroot/lib/bootstrap/",
+      "files": [
+        "dist/css/bootstrap-grid.css",
+        "dist/css/bootstrap-grid.css.map",
+        "dist/css/bootstrap-grid.min.css",
+        "dist/css/bootstrap-grid.min.css.map",
+        "dist/css/bootstrap-reboot.css",
+        "dist/css/bootstrap-reboot.css.map",
+        "dist/css/bootstrap-reboot.min.css",
+        "dist/css/bootstrap-reboot.min.css.map",
+        "dist/css/bootstrap.css",
+        "dist/css/bootstrap.css.map",
+        "dist/css/bootstrap.min.css",
+        "dist/css/bootstrap.min.css.map",
+        "dist/js/bootstrap.bundle.js",
+        "dist/js/bootstrap.bundle.js.map",
+        "dist/js/bootstrap.bundle.min.js",
+        "dist/js/bootstrap.bundle.min.js.map",
+        "dist/js/bootstrap.js",
+        "dist/js/bootstrap.js.map",
+        "dist/js/bootstrap.min.js",
+        "dist/js/bootstrap.min.js.map"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "Ladda@1.0.6",
+      "destination": "wwwroot/lib/ladda/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "limonte-sweetalert2@7.33.1",
+      "destination": "wwwroot/lib/sweetalert2/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery.blockUI@2.70",
+      "destination": "wwwroot/lib/jquery.blockUI/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables@1.10.19",
+      "destination": "wwwroot/lib/datatables/",
+      "files": [
+        "js/jquery.dataTables.min.js",
+        "js/jquery.dataTables.js",
+        "js/dataTables.dataTables.min.js",
+        "js/dataTables.dataTables.js",
+        "js/dataTables.bootstrap4.min.js",
+        "js/dataTables.bootstrap4.js",
+        "images/sort_desc_disabled.png",
+        "images/sort_desc.png",
+        "images/sort_both.png",
+        "images/sort_asc_disabled.png",
+        "images/sort_asc.png",
+        "css/jquery.dataTables_themeroller.css",
+        "css/jquery.dataTables.min.css",
+        "css/jquery.dataTables.css",
+        "css/dataTables.bootstrap4.min.css",
+        "css/dataTables.bootstrap4.css"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "datatables.net-buttons@2.2.0",
+      "destination": "wwwroot/lib/datatables/buttons/",
+      "files": [
+        "js/dataTables.buttons.js",
+        "js/buttons.html5.js",
+        "js/buttons.print.js"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "datatables.net-buttons-bs4@2.2.0",
+      "destination": "wwwroot/lib/datatables/buttons/bs4/",
+      "files": [
+        "css/buttons.bootstrap4.css",
+        "js/buttons.bootstrap4.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jszip@3.2.2",
+      "destination": "wwwroot/lib/jszip/",
+      "files": [
+        "jszip.min.js",
+        "jszip.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "pdfmake@0.1.60",
+      "destination": "wwwroot/lib/pdfmake/",
+      "files": [
+        "pdfmake.js",
+        "pdfmake.min.js",
+        "vfs_fonts.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "select2@4.0.7",
+      "destination": "wwwroot/lib/select2/",
+      "files": [
+        "js/select2.min.js",
+        "css/select2.css",
+        "css/select2.min.css",
+        "js/select2.js",
+        "js/select2.full.min.js",
+        "js/select2.full.js",
+        "js/i18n/es.js"
+      ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "@ttskch/select2-bootstrap4-theme@1.3.2",
+      "destination": "wwwroot/lib/select2/css/bs/",
+      "files": [
+        "dist/select2-bootstrap4.css",
+        "dist/select2-bootstrap4.min.css"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "bootstrap-datepicker@1.8.0",
+      "destination": "wwwroot/lib/bootstrap-datepicker/",
+      "files": [
+        "js/bootstrap-datepicker.min.js",
+        "css/bootstrap-datepicker.min.css",
+        "css/bootstrap-datepicker.css.map",
+        "css/bootstrap-datepicker.standalone.css",
+        "css/bootstrap-datepicker.standalone.css.map",
+        "css/bootstrap-datepicker.standalone.min.css",
+        "css/bootstrap-datepicker.css",
+        "js/bootstrap-datepicker.js",
+        "locales/bootstrap-datepicker.es.min.js",
+        "css/bootstrap-datepicker3.css",
+        "css/bootstrap-datepicker3.css.map",
+        "css/bootstrap-datepicker3.min.css",
+        "css/bootstrap-datepicker3.standalone.css",
+        "css/bootstrap-datepicker3.standalone.css.map",
+        "css/bootstrap-datepicker3.standalone.min.css"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr.js/",
+      "files": [
+        "toastr.min.js",
+        "toastr.css",
+        "toastr.js.map",
+        "toastr.min.css"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "pace@1.0.2",
+      "destination": "wwwroot/lib/pace/",
+      "files": [
+        "pace.js",
+        "pace.min.js",
+        "themes/green/pace-theme-minimal.css",
+        "themes/green/pace-theme-minimal.min.css"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery-validate@1.19.1",
+      "destination": "wwwroot/lib/jquery-validate/",
+      "files": [
+        "jquery.validate.min.js",
+        "jquery.validate.js",
+        "additional-methods.min.js",
+        "additional-methods.js",
+        "localization/messages_es_PE.min.js",
+        "localization/messages_es_PE.js",
+        "localization/messages_es.min.js",
+        "localization/messages_es.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery-easing@1.4.1",
+      "destination": "wwwroot/lib/jquery-easing/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery.perfect-scrollbar@1.4.0",
+      "destination": "wwwroot/lib/perfect-scrollbar/",
+      "files": [
+        "css/perfect-scrollbar.css",
+        "css/perfect-scrollbar.min.css",
+        "perfect-scrollbar.js",
+        "perfect-scrollbar.min.js"
+      ]
+    }
+  ]
+}

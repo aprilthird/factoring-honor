@@ -1,0 +1,43 @@
+﻿@inject FACTORINGHONOR.PE.WEB.Services.IUserConfigurationService userConfigurationService
+@model FACTORINGHONOR.PE.WEB.ViewModels.EffectiveCostSummaryViewModel
+
+@{
+    ViewBag.Title = "Cartera de Recibos";
+    var configuration = await userConfigurationService.GetUserConfiguration(User);
+}
+
+<div class="col-md-12">
+    <div class="d-flex justify-content-end mb-4">
+        <div class="col-md-8 col-lg-6 col-xl-5 px-2 py-3 bg-brand rounded-pill">
+            <div class="row">
+                <div class="col-2 text-center align-items-baseline">
+                    <button class="btn btn-dark" data-toggle="modal" data-target="#detail_modal">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <h4 class="col-10 text-center align-items-baseline">
+                    TCEA de la Cartera: @((Model.Rate * 100).ToString("#.#######")) %
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-brand table-bordered datatable dataTable no-footer" id="fee_receipt_datatable" role="grid"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    ViewBag.Symbol = configuration.CurrencyType.Symbol;
+}
+<partial name="_EffectiveRateModal" />
+
+@section Scripts {
+    <script>
+        _app.constants.currency = "@configuration.CurrencyType.Symbol";
+    </script>
+    <script src="~/js/pages/fee-receipt/index.js"></script>
+}

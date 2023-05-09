@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - @ConstantHelpers.Project.TITLE</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              @*integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"*@
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous">
+    </environment>
+
+    <link href="~/lib/ladda/ladda-themeless.min.css" rel="stylesheet" />
+    <link href="~/lib/pace/themes/green/pace-theme-minimal.min.css" rel="stylesheet" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/login-site.css" />
+    </environment>
+    <environment exclude="Development">
+        @*<link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />*@
+        <link rel="stylesheet" href="~/css/login-site.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <header class="fixed-top">
+        <partial name="_TopbarMenu" />
+    </header>
+    <partial name="_CookieConsentPartial" />
+    <main role="main" class="d-flex p-0 m-0 justify-content-center align-items-center flex-md-column">
+        <div class="container">
+            <div class="background-image">
+                <img src="~/images/bg-img2.jpg" alt="background image" />
+            </div>
+            <div class="row text-center">
+                <div class="title-container mx-auto">
+                    <h1 class="display-4">@ConstantHelpers.Project.TITLE.ToUpper()</h1>
+                    <h2 class="d-none d-md-block text-darker-brand">@ConstantHelpers.Project.DESCRIPTION</h2>
+                    <hr />
+                    <h2>@ViewBag.Title</h2>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </main>
+    <hr />
+    <footer class="fixed-bottom py-2 px-3">
+        &copy; @DateTime.UtcNow.ToDefaultTimeZone().Year - @ConstantHelpers.Project.TITLE
+    </footer>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous">
+            //integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous">
+            //integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        </script>
+    </environment>
+
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validate/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validate/localization/messages_es_PE.min.js"></script>
+    <script src="~/lib/ladda/spin.min.js"></script>
+    <script src="~/lib/ladda/ladda.min.js"></script>
+    <script src="~/lib/pace/pace.min.js"></script>
+
+    <environment include="Development">
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        @*<script src="~/js/site.min.js" asp-append-version="true"></script>*@
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+        _app.constants.url.root = '@Url.Content("~")';
+        $(document).ajaxComplete(function () {
+            Pace.restart();
+        });
+
+        $(function () {
+            var current = location.pathname + location.search;
+            $('#nav li a').each(function () {
+                var $this = $(this);
+                // if the current path is like this link, make it active
+                if ($this.attr('href') === current) {
+                    $this.parent().addClass('active');
+                }
+            })
+        });
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

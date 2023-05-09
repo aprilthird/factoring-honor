@@ -1,0 +1,39 @@
+﻿@model FACTORINGHONOR.PE.WEB.ViewModels.EffectiveCostSummaryViewModel
+@inject FACTORINGHONOR.PE.WEB.Services.IUserConfigurationService userConfigurationService
+
+<div class="modal fade show" id="detail_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalle de la TCEA</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="rate_table" class="table table-brand">
+                    <thead>
+                        <tr>
+                            <th>Per&iacute;odo</th>
+                            <th>Fecha</th>
+                            <th>Flujo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Details)
+                        {
+                            <tr>
+                                <td>@item.TermNumber</td>
+                                <td>@item.Date</td>
+                                <td>@ViewBag.Symbol@item.Value.ToString("0.##")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

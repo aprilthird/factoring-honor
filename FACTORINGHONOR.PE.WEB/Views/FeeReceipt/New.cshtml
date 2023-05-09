@@ -1,0 +1,200 @@
+﻿@model FACTORINGHONOR.PE.WEB.ViewModels.FeeReceiptViewModel
+@inject FACTORINGHONOR.PE.WEB.Services.IUserConfigurationService userConfigurationService
+
+@{
+    ViewBag.Title = "Nuevo Recibo";
+    var configuration = await userConfigurationService.GetUserConfiguration(User);
+}
+
+<form id="form" class="form col-md-12" method="post">
+    <div class="row d-flex justify-content-between">
+        <div class="col-md-5">
+            <div class="sub-form-title">
+                <h3>Datos del Recibo</h3>
+            </div>
+            <div class="form-group row">
+                <label asp-for="IssuingRuc" class="col-sm-4 col-form-label"></label>
+                <div class="input-group col-sm-8">
+                    <input type="text" class="form-control" asp-for="IssuingRuc" maxlength="11" minlenght="11" required />
+                    <div class="input-group-append">
+                        <button id="btn_issuing_ruc" class="btn btn-dark-brand" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Emisor</label>
+                <div class="input-group col-sm-8">
+                    <input id="issuing_name" type="text" readonly class="form-control" placeholder="Entidad Emisora" />
+                    <div class="input-group-append">
+                        <button id="btn_issuing_detail" data-toggle="modal" data-target="#issuing_modal" class="btn btn-dark-brand" type="button">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DebtorRuc" class="col-sm-4 col-form-label"></label>
+                <div class="input-group col-sm-8">
+                    <input type="text" class="form-control" asp-for="DebtorRuc" maxlength="11" minlenght="11" required />
+                    <div class="input-group-append">
+                        <button id="btn_debtor_ruc" class="btn btn-dark-brand" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Deudor</label>
+                <div class="input-group col-sm-8">
+                    <input id="debtor_name" type="text" readonly class="form-control" placeholder="Entidad Deudora" />
+                    <div class="input-group-append">
+                        <button id="btn_debtor_detail" data-toggle="modal" data-target="#debtor_modal" class="btn btn-dark-brand" type="button">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="IssueDate" class="col-sm-4 col-form-label"></label>
+                <div class="input-group col-sm-8">
+                    <input type="text" class="form-control datepicker" asp-for="IssueDate" required readonly />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PaymentDate" class="col-sm-4 col-form-label"></label>
+                <div class="input-group col-sm-8">
+                    <input type="text" class="form-control datepicker" asp-for="PaymentDate" required readonly />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="TotalAmmount" class="col-sm-4 col-form-label"></label>
+                <div class="input-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@configuration.CurrencyType.Symbol</span>
+                    </div>
+                    <input class="form-control" asp-for="TotalAmmount" required />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Withholding" class="col-sm-4 col-form-label"></label>
+                <div class="input-group col-sm-8">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@configuration.CurrencyType.Symbol</span>
+                    </div>
+                    <input class="form-control" asp-for="Withholding" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="sub-form-title">
+                <h3>Datos para el Descuento</h3>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DiscountDate" class="col-sm-4 col-form-label"></label>
+                <div class="input-group col-sm-8">
+                    <input type="text" class="form-control datepicker" asp-for="DiscountDate" required readonly />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="BankId" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <select class="form-control select2 select2-banks" asp-for="BankId" required>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Tasa</label>
+                <div class="input-group col-sm-8">
+                    <input id="bank_rate" type="text" class="form-control" readonly placeholder="Tasa del Banco" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                            <i class="fa fa-percent"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-brand datatable dataTable no-footer" id="bank_cost_datatable" role="grid"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-lg btn-dark" id="btn_calculate">
+            <i class="fa fa-calculator"></i>
+            Calcular
+        </button>
+        <div id="calculate_container" class="mt-4">
+            <table class="table table-brand">
+                <thead>
+                    <tr>
+                        <th>N° d&iacute;as</th>
+                        <th>TEP</th>
+                        <th>Tasa Descuento</th>
+                        <th>Descuento</th>
+                        <th>Costo Inicial</th>
+                        <th>Costo Final</th>
+                        <th>Valor Recibido</th>
+                        <th>Valor Entregado</th>
+                        <th>TCEA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="calc_days"></td>
+                        <td id="calc_rate"></td>
+                        <td id="calc_discount_rate"></td>
+                        <td id="calc_discount"></td>
+                        <td id="calc_initial_cost"></td>
+                        <td id="calc_final_cost"></td>
+                        <td id="calc_received_ammount"></td>
+                        <td id="calc_delivered_ammount"></td>
+                        <td id="calc_total_cost_rate"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="submit" class="btn btn-lg btn-dark mt-4 mb-4" id="btn_save">
+            <i class="fa fa-save"></i>
+            Guardar
+        </button>
+    </div>
+</form>
+
+@{
+    ViewBag.ModalId = "issuing_modal";
+    ViewBag.ModalTitle = "Detalle del Emisor según su RUC";
+}
+<partial name="_EntityRucDetailModal" view-data="@ViewData" />
+@{
+    ViewBag.ModalId = "debtor_modal";
+    ViewBag.ModalTitle = "Detalle del Deudor según su RUC";
+}
+<partial name="_EntityRucDetailModal" view-data="@ViewData" />
+
+@section Scripts {
+    <script>
+        _app.constants.currency = "@configuration.CurrencyType.Symbol";
+    </script>
+    <script src="~/js/pages/fee-receipt/new.js"></script>
+}

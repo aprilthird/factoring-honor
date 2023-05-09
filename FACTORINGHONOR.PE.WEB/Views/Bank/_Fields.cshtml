@@ -1,0 +1,50 @@
+﻿@model FACTORINGHONOR.PE.WEB.ViewModels.BankViewModel
+
+<input asp-for="Id" hidden/>
+
+<div class="row">
+    <div class="form-group col-md-12">
+        <div class="form-group">
+            <label asp-for="Name" class="label"></label>
+            <input type="text" asp-for="Name" class="form-control" required />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        <div class="form-group">
+            <label asp-for="ShortName" class="label"></label>
+            <input type="text" asp-for="ShortName" class="form-control" required />
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <div class="form-group">
+            <label asp-for="RateType" class="label"></label>
+            <select asp-for="RateType" class="form-control select2 select2-rate-types" required>
+                @foreach(var item in ConstantHelpers.Rate.Type.VALUES)
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        <div class="form-group">
+            <label asp-for="RateTerm" class="label"></label>
+            <select asp-for="RateTerm" class="form-control select2 select2-rate-terms" required>
+                @foreach (var item in ConstantHelpers.Rate.TermDays.VALUES)
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <div class="form-group">
+            <label asp-for="RateValue" class="label"></label>
+            <input type="text" asp-for="RateValue" class="form-control" required />
+        </div>
+    </div>
+</div>

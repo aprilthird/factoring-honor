@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Bancos";
+}
+
+    <div class="col-md-12">
+        <div class="text-right mb-4">
+            <button class="btn btn-dark" data-toggle="modal" data-target="#add_modal">
+                <i class="fa fa-plus"></i>
+                Nuevo
+            </button>
+        </div>
+        <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-brand table-bordered datatable dataTable no-footer" id="bank_datatable" role="grid"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<partial name="_CreateModal" />
+<partial name="_EditModal" />
+
+@section Scripts {
+    <script src="~/js/pages/bank/index.js"></script>
+}

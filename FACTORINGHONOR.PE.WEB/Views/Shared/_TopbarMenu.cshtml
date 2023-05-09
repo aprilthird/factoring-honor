@@ -1,0 +1,71 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<nav id="nav" class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+        <img src="~/images/logo.png" width="120" alt="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole(ConstantHelpers.Role.CUSTOMER))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="FeeReceipt" asp-action="Index">Cartera de Recibos <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="FeeReceipt" asp-action="New">Nuevo Recibo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Configuration" asp-action="Index">Configuraciones</a>
+                    </li>
+                }
+                if (User.IsInRole(ConstantHelpers.Role.ADMIN))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Bank" asp-action="Index">Bancos <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="CurrencyType" asp-action="Index">Tipos de Cambio</a>
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+            }
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="HowItWorks">¿Como funciona?</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="AboutUs">Sobre Nosotros</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <text>
+                    Hola, @User.Identity.Name
+                </text>
+            }
+        </span>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form clas="form-inline" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="submit" class="btn btn-link navbar-btn navbar-link" title="Cerrar sesión">
+                            <i class="fa fa-sign-out"></i>
+                        </button>
+                    </li>
+                </ul>
+            </form>
+        }
+    </div>
+</nav>
